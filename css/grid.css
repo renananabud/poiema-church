@@ -1,0 +1,78 @@
+/*-----------------------------------------------------------*/
+/* GRID DA PAGINA */
+
+.footer { background-color: lightgreen; }
+ 
+.grid-container{
+	display: grid;
+	grid-template-columns: 10px repeat(10,1fr) 10px;
+	/*12 colunas, sendo a primeira e ultima de 10px, 
+	e as do meio dividem igualmente o tamanho restante*/
+	grid-template-rows: 76px 80vh repeat(4,auto) 230px;
+	/*6 linhas, a primeira para o header de 60px;
+	4 no meio com o tamanho automatico para, Slide, ABOUT-header, MENSAGENS e CIDADES
+	a ultima para o footer de 200px
+	 */
+	grid-gap: 0px;
+	height: 100%;
+}
+
+/*define a largura de 100% de todas as seções*/
+.header, .slide, .about-header, .about, 
+.mensagens, .cidades, .footer {
+	grid-column: 1 / -1;
+}
+
+/*define a posição de cada seção nas linhas*/
+.header {grid-row: 1 / span 1;}
+.slide {grid-row: 2/span 1;}
+.about-header {grid-row: 3 / span 1;}
+.about {grid-row: 4 / span 1;}
+.mensagens {grid-row: 5 / span 1;}
+.cidades {grid-row: 6 / span 1;}
+.footer {grid-row: 7 / span 1;}
+
+/*elementos sem margem, são 100% width*/
+.full-wide{
+	grid-column: 1 / -1;
+}
+
+.mensagens > h1 {
+	grid-column: 1 / -1;
+}
+
+.mensagens > div {
+	grid-column: 3 / span 8;
+}
+
+/* FIM GRID PAGINA --------------------------------------*/
+
+/*-----------------------------------------------------------*/
+/*grid das imagens das cidades*/
+#ondeestamos .subgrid-container{
+	display: grid;
+	grid-template-columns: auto auto;
+	grid-template-rows: auto auto;
+	grid-gap: 0px;
+}
+
+@media screen and (max-width: 780px) {
+	#ondeestamos .subgrid-container{
+		grid-template-columns: auto;
+		grid-template-rows: auto auto auto auto;
+	}
+	
+	/*altera a posição da img da cidade de mogi para a ultima 
+	posição, para as cores ficarem intercaladas*/
+	.div-cidades:nth-child(2) {
+		grid-row: -1;
+	}
+
+	.grid-container{
+		grid-template-rows: 50px 80vh repeat(4,auto) 250px;
+	/* altera o tamanho do header para o mobile
+	 */
+	}
+}
+
+/* FIM grid das imagens das cidades -------------------------*/
